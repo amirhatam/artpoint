@@ -5,7 +5,8 @@ import Link from 'next/link'
 import BGI from '../../public/images/bg.webp'
 
 
-export default function Post(props) {
+export default function Post() {
+
     // USE 'window.innerHeight' in Next.js
     const [height, setHeight] = useState(0);
     useEffect(() => {
@@ -83,5 +84,53 @@ export default function Post(props) {
 
     </>
 }
+// export async function getStaticProps(p) {
+//     const datas = (await import("../../data.json")).default;
+//     return {
+//         props: { datas }
+//     };
+// }
 
+// export async function getStaticPaths() {
+//     const datas = (await import("../../data.json")).default;
+
+//     const artistName = ''
+//     const arr = []
+
+//     const findArtist = datas.artists.map(a => {
+//         //Find artist artwork from id
+//         if (artistId.id === a.id) {
+//             artistName = a.name
+//             const artworks = a.artworks
+//             const firstName = a.name.split(" ")[0].toLowerCase()
+//             const lastName = ''
+//             if (a.name.split(" ")[1]) {
+//                 lastName = a.name.split(" ")[1].toLowerCase()
+//             }
+
+//             // filter undefined data & remove dash and name of artist
+//             artworks.map(e => {
+//                 if (e.slug !== undefined) {
+//                     let rmvDash = e.slug.split("-")
+//                     let res = []
+//                     rmvDash.filter(s => {
+//                         if (s !== firstName && s !== lastName) {
+//                             res.push(s + ' ')
+//                         }
+
+//                     })
+//                     arr.push(res)
+//                 }
+
+//             })
+//         }
+//     })
+//     return {
+//         paths:
+//         {
+//             params:{ id:  toString()}
+//         },
+//         fallback: false,
+//     };
+// }
 
