@@ -1,0 +1,81 @@
+import { useRouter } from "next/router";
+import { useEffect, useState } from 'react';
+import data from '../../data.json'
+
+export default function Post(props) {
+    // USE 'window.innerHeight' in Next.js
+    const [height, setHeight] = useState(0);
+    useEffect(() => {
+        setHeight(window.innerHeight);
+    }, []);
+
+    //Get data using variable from query
+    const router = useRouter();
+    const artistId = router.query;
+
+    const artistName = ''
+    const arr = []
+
+    const findArtist = data.artists.map(a => {
+        //Find artist artwork from id
+        if (artistId.id === a.id) {
+            artistName = a.name
+            const artworks = a.artworks
+            const firstName = a.name.split(" ")[0].toLowerCase()
+            const lastName = ''
+            if (a.name.split(" ")[1]) {
+                lastName = a.name.split(" ")[1].toLowerCase()
+            }
+
+            // filter undefined data & remove dash and name of artist
+            artworks.map(e => {
+                if (e.slug !== undefined) {
+                    let rmvDash = e.slug.split("-")
+                    let res = []
+                    rmvDash.filter(s => {
+                        if (s !== firstName && s !== lastName) {
+                            res.push(s + ' ')
+                        }
+
+                    })
+                    arr.push(res)
+                }
+
+            })
+        }
+    })
+
+    return <>
+        <main >
+            <div className="container marketing pt-5">
+                <div className="row justify-content-center pt-5">
+                    <div className="card bg-light col-lg-5 mt-5 pt-5 pb-4" >
+                        <h3 className='mb-4 text-center fw-light'> Les œuvres de <strong> {artistName}</strong>
+                        </h3>
+                        <div className='px-5'>
+
+                            {
+                                arr.length > 0
+                                    ?
+                                    arr.map((e, i) =>
+                                        e !== undefined
+                                            ?
+                                            <h5 key={i} className="text-capitalize mt-3 fw-light">{i + 1} -  <strong>{e}</strong></h5>
+                                            :
+                                            null
+                                    )
+                                    :
+                                    <h5 className="mt-3">Not Found !</h5>
+                            }
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+    </>
+}
+
+
