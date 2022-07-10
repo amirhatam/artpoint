@@ -1,6 +1,9 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from 'react';
 import data from '../../data.json'
+import Link from 'next/link'
+import BGI from '../../public/images/bg.webp'
+
 
 export default function Post(props) {
     // USE 'window.innerHeight' in Next.js
@@ -46,7 +49,7 @@ export default function Post(props) {
     })
 
     return <>
-        <main >
+        <main style={{ background: `url(${BGI.src})`, backgroundSize: 'cover', height: height }}>
             <div className="container marketing pt-5">
                 <div className="row justify-content-center pt-5">
                     <div className="card bg-light col-lg-5 mt-5 pt-5 pb-4" >
@@ -68,9 +71,12 @@ export default function Post(props) {
                                     <h5 className="mt-3">Not Found !</h5>
                             }
                         </div>
-
+                        <div className="text-center mt-3">
+                            <Link href={`/`}>
+                                <a className="btn btn-secondary" > &laquo; Retour</a>
+                            </Link>
+                        </div>
                     </div>
-
                 </div>
             </div>
         </main>
