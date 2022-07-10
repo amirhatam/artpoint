@@ -51,8 +51,8 @@ export default function Post(props) {
     return <>
         <main style={{ background: `url(${BGI.src})`, backgroundSize: 'cover', height: height }}>
             <div className="container marketing pt-5">
-                <div className="row justify-content-center pt-5">
-                    <div className="card bg-light col-lg-5 mt-5 pt-5 pb-4" >
+                <div className="row justify-content-center pt-lg-5">
+                    <div className="card bg-light col-lg-5 col-10 mt-lg-5 pt-5 pb-4" >
                         <h3 className='mb-4 text-center fw-light'> Les œuvres de <strong> {artistName}</strong>
                         </h3>
                         <div className='px-5'>
