@@ -23,9 +23,10 @@ export default function Main(props) {
                                 </div>
                                 <div>
                                     <Link href={`/blog/${sub.id}`}>
-                                        <a className="btn btn-secondary" >Des Œuvre &raquo;</a>
+                                        <a className="btn btn-secondary" >Des Œuvres &raquo;</a>
                                     </Link>
                                 </div>
+
                             </div>
                         )
                     }
